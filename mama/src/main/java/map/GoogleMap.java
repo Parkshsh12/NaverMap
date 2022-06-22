@@ -42,11 +42,14 @@ public class GoogleMap {
     
            JSONObject jo = new JSONObject(responseStrBuilder.toString());
            JSONArray results = jo.getJSONArray("results");
-
+           System.out.println(jo.get("status"));
+           
            Map<String, String> ret = new HashMap<String, String>();
            if(results.length() > 0) {
                JSONObject jsonObject;
                jsonObject = results.getJSONObject(0);
+               System.out.println(jsonObject);
+               JSONObject a = jsonObject.getJSONArray("address_components").getJSONObject(0);
                Double lat = jsonObject.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
                Double lng = jsonObject.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
                ret.put("lat", lat.toString());
@@ -58,27 +61,6 @@ public class GoogleMap {
                System.out.println(ja.get(0));
                System.out.println(ja.get(1));
                
-               for(int l=0; l<ja.length(); l++) {
-                   JSONObject curjo = ja.getJSONObject(l);
-                   String type = curjo.getJSONArray("types").getString(0);
-                   String short_name = curjo.getString("short_name");
-                   if(type.equals("postal_code")) {
-                       System.out.println("POSTAL_CODE: "+short_name);
-                       ret.put("zip", short_name);
-                   }
-                   else if(type.equals("administrative_area_level_3")) {
-                       System.out.println("CITY: "+short_name);
-                       ret.put("city", short_name);
-                   }
-                   else if(type.equals("administrative_area_level_2")) {
-                       System.out.println("PROVINCE: "+short_name);
-                       ret.put("province", short_name);
-                   }
-                   else if(type.equals("administrative_area_level_1")) {
-                       System.out.println("REGION: "+short_name);
-                       ret.put("region", short_name);
-                   }                    
-               }
                return ret;
            }
        } catch (Exception e) {
