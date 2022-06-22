@@ -25,7 +25,7 @@
             	map: map,
      			position: new naver.maps.LatLng(<%=x%>, <%=y%>),
      			icon:{
-     				content: '<img src="./resources/free-icon-placeholder-148845.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; -webkit-user-select: none; position: absolute; width: 1.5rem; height: 1.5rem; left: 0px; top: 0px;">',
+     				content: '<img src="./resources/img/free-icon-flag-148878.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; -webkit-user-select: none; position: absolute; width: 1.5rem; height: 1.5rem; left: 0px; top: 0px;">',
      	            size: new naver.maps.Size(32, 32),
      	            anchor: new naver.maps.Point(8, 16)
      			}
